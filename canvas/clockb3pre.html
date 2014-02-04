@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>HTML5Clock</title>
+		<script type="text/javascript">
+		var c;
+		var cxt;
+		var sa;
+		var ma;
+		var ha;
+
+		function init(cElt) {
+			if (!cElt) {
+				cElt = document.createElement("canvas");
+				cElt.id = "clockarea";
+				document.body.appendChild(cElt);
+			}
+			c = cElt;
+			c.height = "400";
+			c.width = "400";
+			c.style.margin = 'auto';
+			document.body.style.textAlign = 'center';
+			c.innerHTML = "Your browser does not support HTML5 canvas, an element which is" +
+" used to render the clock. To allow web developers to do amazing stuff easier, please " +
+"consider switching to one of these broswers: <ul><li><a href='http://windows.microsoft.com" +
+"/en-US/internet-explorer/products/ie/home'>Internet Explorer 9 (Windows Vista or later)</a>" +
+"</li><li><a href='http://www.getfirefox.com'>Mozilla Firefox</a></li><li><a href='http://www.g" +
+"oogle.com/chrome'>Google Chrome</a></li><li><a href='http://www.opera.com'>Opera</a></li><li><" +
+"a href='http://www.apple.com/safari/download/'>Apple Safari</a></li></ul>";
+			cxt = c.getContext("2d");
+			var today = new Date();
+			var hour = today.getHours();
+			var min = today.getMinutes();
+			var sec = today.getSeconds();
+			sa = ((2*Math.PI)/60 * sec) - (Math.PI / 2);
+			ma = ((2*Math.PI)/60 * min) + (((2*Math.PI)/60)/60 * sec) - (Math.PI / 2);
+			ha = ((2*Math.PI)/12 * (hour > 12 ? hour-12 : hour)) + (((2*Math.PI)/12)/60 *
+min) + ((((2*Math.PI)/12)/60)/60 * sec) - (Math.PI/2);
+			drawClock();
+		}
+		
+		function incAngles() {
+			sa += (2 * Math.PI) / 60;
+			ma += ((2 * Math.PI) / 60) / 60;
+			ha += (((2 * Math.PI) / 60) / 60) / 12;
+			var t = setTimeout('drawClock()', 1000);
+		}
+
+		function drawCircle(color, radius) {
+			cxt.fillStyle = color;
+			cxt.beginPath();
+			cxt.arc(200, 200, radius, 0, Math.PI*2);
+			cxt.closePath();
+			cxt.fill();
+		}
+
+		function drawLine(xFrom, xTo, yFrom, yTo) {
+			cxt.moveTo(xFrom, yFrom);
+			cxt.lineTo(xTo, yTo);
+		}
+
+		function drawClock() {
+			document.body.style.background = document.getElementById("colors3").value;
+			if (document.getElementById("colors3").value == "black")
+				document.body.style.color = "white";
+			else
+				document.body.style.color = "black";
+			c.style.background = document.getElementById("colors3").value;
+			drawCircle(document.getElementById("colors1").value, 200);
+			drawCircle(document.getElementById("colors2").value, 3);
+			cxt.strokeStyle = document.getElementById("colors2").value;
+			drawLine(-30*Math.cos(sa)+200,
+200*Math.cos(sa)+200, -30*Math.sin(sa)+200, 200*Math.sin(sa)+200);
+			drawLine(200, 180*Math.cos(ma)+200, 200, 180*Math.sin(ma)+200);
+			drawLine(200, 130*Math.cos(ha)+200, 200, 130*Math.sin(ha)+200);
+			for (var a = 0, i = 0; a < 2 * Math.PI; a += (2 * Math.PI) / 60, i++)
+				if (i % 5 == 0)
+					drawLine(200*Math.cos(a)+200, 190*Math.cos(a)+200,
+					200*Math.sin(a)+200, 190*Math.sin(a)+200);
+				else
+					drawLine(198*Math.cos(a)+200, 196*Math.cos(a)+200,
+					198*Math.sin(a)+200, 196*Math.sin(a)+200);
+			cxt.stroke();
+			incAngles();
+		}
+		</script>
+	</head>
+	<body>
+	
+	<p> <font size="6" face="segoe ui"> HTML5 Clock </font> </p>
+	</br>
+	</br>
+	</br>
+	
+		<font face="segoe ui"> Clock color: </font>
+		<select id="colors1" name="Clock color">
+			<option value="black">Black</option>
+			<option value="red">Red</option>
+			<option value="yellow">Yellow</option>
+			<option value="green">Green</option>
+			<option value="blue">Blue</option>
+			<option value="#FF4500">Orange</option>
+			<option value="Purple ">Purple</option>
+			<option value="#2E8B57">Sea</option>
+			<option value="#FFD700">Gold</option>
+			<option value="#C0C0C0">Silver</option>
+			<option value="white">None</option>
+		</select>
+		
+		&nbsp;
+		&nbsp;
+		&nbsp;
+		&nbsp;
+		&nbsp;
+		&nbsp;
+		
+		<font face="segoe ui"> Pointer color: </font>
+		<select id="colors2" name="Pointer color">
+			<option value="white">White</option>
+			<option value="black">Black</option>
+			<option value="red">Red</option>
+			<option value="yellow">Yellow</option>
+			<option value="green">Green</option>
+			<option value="blue">Blue</option>
+		</select>
+		
+		</br>
+		</br>
+		
+		&nbsp;
+		&nbsp;
+		&nbsp;
+		&nbsp;
+		&nbsp;
+		&nbsp;
+		&nbsp;
+		&nbsp;
+		&nbsp;  
+		&nbsp;
+		&nbsp;
+		&nbsp;
+		
+		<font face="segoe ui"> Background color: </font>
+		<select id="colors3" name="Background color">
+			<option value="white">Default</option>
+			<option value="black">Black</option>
+			<option value="red">Red</option>
+			<option value="yellow">Yellow</option>
+			<option value="green">Green</option>
+			<option value="blue">Blue</option>
+			<option value="#FF4500">Orange</option>
+			<option value="Purple ">Purple</option>
+			<option value="#2E8B57">Sea</option>
+			<option value="#FFD700">Gold</option>
+			<option value="#C0C0C0">Silver</option>
+		</select>
+		
+		</br>
+		</br>
+		</br>
+		</br>
+
+		<script type="text/javascript">
+		init(null);
+		</script>
+
+		</br>
+		</br>
+		</br>
+		
+		<input type="button" value="About HTML5Clock..."
+onClick="alert('HTML5Clock b2. Some Rights Reserved.(2011)\n\n\
+scripting by Daniel Desira, a Mozilla contributor and 1st year \
+BSc ICT student at the University of Malta\nlayout by Stuart Buge\
+ja, a former MCAST ICT student')">
+	</body>
+</html>

@@ -1,0 +1,165 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf8" />
+		<title>Danny CSS3 clock</title>
+		<style>
+		div {
+			height: 5px;
+			position: absolute;
+			top: 250px;
+		}
+		
+		.hours .visible_half, .minutes .visible_half { border-radius: 15px; }
+		.seconds .visible_half { height: 1px; }
+		
+		.hidden_half {
+			top: 0px;
+			width: 45%;
+			opacity: 0;
+		}
+		
+		.visible_half {
+			top: 0px;
+			right: 0px;
+			width: 55%;
+			border: 1px solid;
+			background-color: black;
+		}
+
+		.clock {
+			background-color: blue;
+			width: 500px;
+			height: 500px;
+			top: 0px;
+			left: 0px;
+			border: solid 1px;
+			border-radius: 1000px;
+		}
+
+		.hours {
+			left: 125px;
+			width: 250px;
+			animation:
+				rotate_hours
+				-moz-calc(60 * 60 * 60)s
+				infinite;
+			-moz-animation:
+				rotate_hours
+				-moz-calc(60 * 60 * 60)s
+				infinite;
+			-webkit-animation:
+				rotate_hours
+				-webkit-calc(60 * 60 * 60)s
+				infinite;
+			-o-animation:
+				rotate_hours
+				-o-calc(60 * 60 * 60)s
+				infinite;
+			-ms-animation:
+				rotate_hours
+				-ms-calc(60 * 60 * 60)s;
+		}
+		
+		.minutes {
+			left: 25px;
+			width: 450px;
+			animation:
+				rotate_minutes
+				-moz-calc(60 * 60)s
+				infinite;
+			-moz-animation:
+				rotate_minutes
+				-moz-calc(60 * 60)s
+				infinite;
+			-webkit-animation:
+				rotate_minutes
+				-webkit-calc(60 * 60)s
+				infinite;
+			-o-animation:
+				rotate_minutes
+				-o-calc(60 * 60)s
+				infinite;
+			-ms-animation:
+				rotate_minutes
+				-ms-calc(60 * 60)s
+				infinite;
+		}
+		
+		.seconds {
+			left: 10px;
+			width: 480px;
+			animation: rotate_seconds 60s infinite;
+			-moz-animation: rotate_seconds 60s infinite;
+			-webkit-animation: rotate_seconds 60s infinite;
+			-o-animation: rotate_seconds 60s infinite;
+			-ms-animation: rotate_seconds 60s infinite;
+		}
+		</style>
+		<script>
+		function getKeyframes(hand, handAngle) {
+			var FULL_ROTATION = 360,
+				QUARTER_ROTATION = FULL_ROTATION / 4;
+		
+			return '@keyframes rotate_' + hand + ' {' +
+					'from { transform: rotate(' + (handAngle - QUARTER_ROTATION) + 'deg); }' +
+					'to { transform: rotate(' + (handAngle + FULL_ROTATION - QUARTER_ROTATION) + 'deg); }' +
+				'}' +
+		
+				'@-moz-keyframes rotate_' + hand + ' {' +
+					'from { -moz-transform: rotate(' + (handAngle - QUARTER_ROTATION) + 'deg); }' +
+					'to { -moz-transform: rotate(' + (handAngle + FULL_ROTATION - QUARTER_ROTATION) + 'deg); }' +
+				'}' +
+		
+				'@-webkit-keyframes rotate_' + hand + ' {' +
+					'from { -webkit-transform: rotate(' + (handAngle - QUARTER_ROTATION) + 'deg); }' +
+					'to { -webkit-transform: rotate(' + (handAngle + FULL_ROTATION - QUARTER_ROTATION) + 'deg); }' +
+				'}' +
+
+				'@-o-keyframes rotate_' + hand + ' {' +
+					'from { -o-transform: rotate(' + (handAngle - QUARTER_ROTATION) + 'deg); }' +
+					'to { -o-transform: rotate(' + (handAngle + FULL_ROTATION - QUARTER_ROTATION) + 'deg); }' +
+				'}';
+		}
+
+		var CLOCK_DIVISOR1 = 360 / 12,
+			CLOCK_DIVISOR2 = 360 / 60,
+			CLOCK_DIVISOR3 = CLOCK_DIVISOR2 / 60,
+			CLOCK_DIVISOR4 = CLOCK_DIVISOR2 / 12;
+		
+		var now = new Date(),
+			hour = now.getHours(),
+			hourCorrected = hour < 12 ? hour : hour - 12;
+			minutes = now.getMinutes(),
+			seconds = now.getSeconds(),
+		
+			hourAngle = hourCorrected * CLOCK_DIVISOR1 + minutes * CLOCK_DIVISOR4 + seconds * CLOCK_DIVISOR3,
+			minutesAngle = minutes * CLOCK_DIVISOR2 + seconds * CLOCK_DIVISOR3,
+			secondsAngle = seconds * CLOCK_DIVISOR2,
+		
+			style = document.getElementsByTagName('style')[0];
+
+		style.innerHTML += getKeyframes('hours', hourAngle) +
+			getKeyframes('minutes', minutesAngle) +
+			getKeyframes('seconds', secondsAngle);
+		</script>
+	</head>
+	<body>
+		<div class="clock" id="clock">
+			<div class="hours" id="hours">
+				<div class="hidden_half"></div>
+				<div class="visible_half"></div>
+			</div>
+			<div class="minutes" id="minutes">
+				<div class="hidden_half"></div>
+				<div class="visible_half"></div>
+			</div>
+			<div class="seconds" id="seconds">
+				<div class="hidden_half"></div>
+				<div class="visible_half"></div>
+			</div>
+			
+			<div class="first tick">|</div>
+		</div>
+	</body>
+</html>

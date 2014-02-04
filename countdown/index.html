@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <link href="index_files/css.css" rel="stylesheet">
+    <style>
+    .clock {
+      height: 200px;
+      width: 350px;
+      border-radius: 20px;
+      box-shadow: 5px 5px 5px rgb(0, 0, 0);
+      background-color: rgb(0, 0, 0);
+      text-align: center;
+    }
+    
+    .timerText {
+      position: relative;
+      top: 60px;
+      color: rgb(0, 255, 255);
+      font-size: 60px;
+      font-family: 'Iceberg';
+    }
+    </style>
+    <title>start of summer countdown</title>
+  </head>
+  <body>
+    <div class="clock">
+      <div id="timer" class="timerText">22:22:09:49</div>
+    </div>
+    <script>
+    <!--
+    var SECOND = 1000;
+    
+    var date = new Date();
+    var count = {
+      d: 27 - date.getDate(),
+      h: 12 - date.getHours(),
+      m: 15 - date.getMinutes() - 1,
+      s: 60 - date.getSeconds()
+    };
+    var container = document.getElementById('timer');
+    
+    if (count.m < 0) {
+      count.m += 60;
+      count.h--;
+    }
+    
+    if (count.h < 0) {
+      count.h += 24;
+      count.d--;
+    }
+    
+    container.innerHTML = time();
+    
+    setInterval(function () {
+      count.s--;
+      if (count.s === -1) {
+        count.s = 59;
+        count.m--;
+        if (count.m === -1) {
+          count.m = 59;
+          count.h--;
+          if (count.h === -1) {
+            count.h = 23;
+            count.d--;
+          }
+        }
+      }
+      
+      container.innerHTML = time();
+    }, SECOND);
+    
+    function formatter(no) {
+      return no < 10 ? '0' + no : no;
+    }
+    
+    function time() {
+      return formatter(count.d) + ':' + formatter(count.h) + ':' +
+          formatter(count.m) + ':' + formatter(count.s);
+    }
+    -->
+    </script>
+    <noscript>JS disabled/notsupported! Ouch.</noscript>
+  
+
+
+<script type="text/javascript" src="index_files/count.html"></script>
+<!-- End Of Analytics Code -->
+</body></html>
+<!-- Hosting24 Analytics Code -->
