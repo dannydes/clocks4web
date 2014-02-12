@@ -1,0 +1,9 @@
+body {
+  text-align: center;
+}
+
+div {
+  position: absolute;
+  left: 33.3%;
+  bottom: 0px;
+}

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf8" />
+		<title>HTML5Clock</title>
+    <link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+	
+	<p> <font size="6" face="segoe ui"> HTML5 Clock </font> </p>
+	</br>
+	</br>
+	</br>
+	
+	<div>
+		<font face="segoe ui"> Clock color: </font>
+		<select id="colors1" name="Clock color">
+			<option value="black">Black</option>
+			<option value="red">Red</option>
+			<option value="yellow">Yellow</option>
+			<option value="green">Green</option>
+			<option value="blue">Blue</option>
+			<option value="#FF4500">Orange</option>
+			<option value="Purple ">Purple</option>
+			<option value="#2E8B57">Sea</option>
+			<option value="#FFD700">Gold</option>
+			<option value="#C0C0C0">Silver</option>
+			<option value="white">None</option>
+		</select>
+		
+		&nbsp;
+		&nbsp;
+		&nbsp;
+		&nbsp;
+		&nbsp;
+		&nbsp;
+		
+		<font face="segoe ui"> Pointer color: </font>
+		<select id="colors2" name="Pointer color" onhover="changePointer()">
+			<option value="white">White</option>
+			<option value="black">Black</option>
+			<option value="red">Red</option>
+			<option value="yellow">Yellow</option>
+			<option value="green">Green</option>
+			<option value="blue">Blue</option>
+		</select>
+		
+		</br>
+		</br>
+		
+		&nbsp;
+		&nbsp;
+		&nbsp;
+		&nbsp;
+		&nbsp;
+		&nbsp;
+		&nbsp;
+		&nbsp;
+		&nbsp;  
+		&nbsp;
+		&nbsp;
+		&nbsp;
+		
+		<font face="segoe ui"> Background color: </font>
+		<select id="colors3" name="Background color" onhover="changeBackground()">
+			<option value="white">Default</option>
+			<option value="black">Black</option>
+			<option value="red">Red</option>
+			<option value="yellow">Yellow</option>
+			<option value="green">Green</option>
+			<option value="blue">Blue</option>
+			<option value="#FF4500">Orange</option>
+			<option value="Purple ">Purple</option>
+			<option value="#2E8B57">Sea</option>
+			<option value="#FFD700">Gold</option>
+			<option value="#C0C0C0">Silver</option>
+		</select>
+	</div>
+	
+		</br>
+		</br>
+		</br>
+		</br>
+		
+		<canvas id="clockarea" width="400" height="400">
+    Your browser does not support HTML5 canvas, an element which is" +
+" used to render the clock. To allow web developers to do amazing stuff easier, please " +
+"consider switching to one of these broswers: <ul><li><a href='http://windows.microsoft.com" +
+"/en-US/internet-explorer/products/ie/home'>Internet Explorer 9 (Windows Vista or later)</a>" +
+"</li><li><a href='http://www.getfirefox.com'>Mozilla Firefox</a></li><li><a href='http://www.g" +
+"oogle.com/chrome'>Google Chrome</a></li><li><a href='http://www.opera.com'>Opera</a></li><li><" +
+"a href='http://www.apple.com/safari/download/'>Apple Safari</a></li></ul>
+    </canvas>
+
+		</br>
+		</br>
+		</br>
+		
+		<input type="button" value="About HTML5Clock..."
+onClick="alert('Canvas Clock b4. Some Rights Reserved.(2011)\n\n\
+scripting by Daniel Desira, a Mozilla contributor and 1st year \
+BSc ICT student at the University of Malta\nlayout by Stuart Buge\
+ja, a former MCAST ICT student')">
+
+    <script src="main.js"></script>
+	</body>
+</html>
