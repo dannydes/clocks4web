@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf8" />
+		<title>Danny CSS3 clock</title>
+		<style>
+		div {
+			height: 5px;
+			position: absolute;
+			top: 250px;
+		}
+		
+		.hours .visible_half, .minutes .visible_half { border-radius: 15px; }
+		.seconds .visible_half { height: 1px; }
+		
+		.hidden_half {
+			top: 0px;
+			width: 45%;
+			opacity: 0;
+		}
+		
+		.visible_half {
+			top: 0px;
+			right: 0px;
+			width: 55%;
+			border: 1px solid;
+			background-color: black;
+		}
+
+		.clock {
+			background-color: blue;
+			width: 500px;
+			height: 500px;
+			top: 0px;
+			left: 0px;
+			border: solid 1px;
+			border-radius: 1000px;
+		}
+
+		.hours {
+			left: 125px;
+			width: 250px;
+			animation: rotate_hours 21600s infinite;
+			-webkit-animation: rotate_hours 21600s infinite;
+		}
+		
+		.minutes {
+			left: 25px;
+			width: 450px;
+			animation: rotate_minutes 3600s infinite;
+			-webkit-animation: rotate_minutes 3600s infinite;
+		}
+		
+		.seconds {
+			left: 10px;
+			width: 480px;
+			animation: rotate_seconds 60s infinite;
+			-webkit-animation: rotate_seconds 60s infinite;
+		}
+		</style>
+		<script src="main.js"></script>
+	</head>
+	<body>
+		<div class="clock" id="clock">
+			<div class="hours" id="hours">
+				<div class="hidden_half"></div>
+				<div class="visible_half"></div>
+			</div>
+			<div class="minutes" id="minutes">
+				<div class="hidden_half"></div>
+				<div class="visible_half"></div>
+			</div>
+			<div class="seconds" id="seconds">
+				<div class="hidden_half"></div>
+				<div class="visible_half"></div>
+			</div>
+			
+			<div class="first tick">|</div>
+		</div>
+	</body>
+</html>
