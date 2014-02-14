@@ -1,13 +1,16 @@
 var
-c,
+c = document.getElementById("clockarea"),
 cxt,
 angleworker,
 ha,
 ma,
-sa;
+sa,
+aboutButton = document.getElementById("about"),
+backgroundColorEl = document.getElementById("colors3"),
+clockColorEl = document.getElementById("colors1"),
+pointerColorEl = document.getElementById("colors2");
 
-(function init(cElt) {
-  c = cElt;
+(function init() {
   cxt = c.getContext("2d");
 
   changeBackground();
@@ -24,11 +27,22 @@ sa;
   angleworker.onmessage = function(e) {
     parseMsg(e.data);
     drawClock();
-  }
-})(document.getElementById("clockarea"));
+  };
+  
+  aboutButton.addEventListener("click", function about() {
+    alert("Canvas Clock b5. WTFPL (2011-2014)\n\n" +
+      "scripting by Daniel Desira, a Mozilla contributor and 1st year " +
+      "BSc ICT student at the University of Malta\nlayout by Stuart Buge" +
+      "ja, a former MCAST ICT student");
+  });
+  
+  backgroundColorEl.addEventListener("change", changeBackground);
+  clockColorEl.addEventListener("change", drawClock);
+  pointerColorEl.addEventListener("change", changePointer);
+})();
 
 function parseMsg(m) {
-  var msg = m.split(' ');
+  var msg = m.split(" ");
   sa = parseFloat(msg[0]);
   ma = parseFloat(msg[1]);
   ha = parseFloat(msg[2]);
@@ -49,8 +63,8 @@ function drawLine(xFrom, xTo, yFrom, yTo) {
 
 function drawClock() {
   
-  drawCircle(document.getElementById("colors1").value, 200);
-  drawCircle(document.getElementById("colors2").value, 3);
+  drawCircle(clockColorEl.value, 200);
+  drawCircle(pointerColorEl.value, 3);
   
   drawLine(-30*Math.cos(sa)+200,
 200*Math.cos(sa)+200, -30*Math.sin(sa)+200, 200*Math.sin(sa)+200);
@@ -67,13 +81,13 @@ function drawClock() {
 }
 
 function changePointer() {
-  cxt.strokeStyle = document.getElementById("colors2").value;
+  cxt.strokeStyle = pointerColorEl.value;
 }
 
 function changeBackground() {
-  c.style.background = document.getElementById("colors3").value;
-  document.body.style.background = document.getElementById("colors3").value;
-  if (document.getElementById("colors3").value == "black")
+  c.style.background = backgroundColorEl.value;
+  document.body.style.background = backgroundColorEl.value;
+  if (backgroundColorEl.value == "black")
     document.body.style.color = "white";
   else
     document.body.style.color = "black";
