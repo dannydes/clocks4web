@@ -2,12 +2,12 @@
 <html>
 	<head>
 		<meta charset="utf8" />
-		<title>HTML5Clock</title>
+		<title>Canvas Clock</title>
     <link rel="stylesheet" href="style.css" />
 	</head>
 	<body>
 	
-	<p> <font size="6" face="segoe ui"> HTML5 Clock </font> </p>
+	<p> <font size="6" face="segoe ui"> Canvas Clock </font> </p>
 	</br>
 	</br>
 	</br>
@@ -62,7 +62,7 @@
 		&nbsp;
 		
 		<font face="segoe ui"> Background color: </font>
-		<select id="colors3" name="Background color" onhover="changeBackground()">
+		<select id="colors3" name="Background color" onchange="changeBackground()">
 			<option value="white">Default</option>
 			<option value="black">Black</option>
 			<option value="red">Red</option>
@@ -83,20 +83,16 @@
 		</br>
 		
 		<canvas id="clockarea" width="400" height="400">
-    Your browser does not support HTML5 canvas, an element which is" +
-" used to render the clock. To allow web developers to do amazing stuff easier, please " +
-"consider switching to one of these broswers: <ul><li><a href='http://windows.microsoft.com" +
-"/en-US/internet-explorer/products/ie/home'>Internet Explorer 9 (Windows Vista or later)</a>" +
-"</li><li><a href='http://www.getfirefox.com'>Mozilla Firefox</a></li><li><a href='http://www.g" +
-"oogle.com/chrome'>Google Chrome</a></li><li><a href='http://www.opera.com'>Opera</a></li><li><" +
-"a href='http://www.apple.com/safari/download/'>Apple Safari</a></li></ul>
+      <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/canvas#Browser_compatibility">
+        Your browser does not support &lt;canvas&gt;. :(
+      </a>
     </canvas>
 
 		</br>
 		</br>
 		</br>
 		
-		<input type="button" value="About HTML5Clock..."
+		<input type="button" value="About Canvas Clock..."
 onClick="alert('Canvas Clock b4. Some Rights Reserved.(2011)\n\n\
 scripting by Daniel Desira, a Mozilla contributor and 1st year \
 BSc ICT student at the University of Malta\nlayout by Stuart Buge\
